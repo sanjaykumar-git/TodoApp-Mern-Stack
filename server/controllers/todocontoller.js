@@ -42,12 +42,15 @@ export async function addTodo(req, res, next) {
 export async function getAllTodos(req, res, next) {
   try {
     await connectToDB();
-    const todos = await Todo.find();
+    const todos = await Todo.find({ userId: req.user.id }); // Fetch only the user's todos
+    if (!todos) return res.status(200).json([]); // Ensure an empty array is returned
     res.status(200).json(todos);
   } catch (err) {
+    console.error("Error fetching todos:", err);
     next(createError(500, "Failed to fetch todos"));
   }
 }
+
 
 // Get a single todo by ID
 export async function getTodo(req, res, next) {
@@ -65,16 +68,24 @@ export async function getTodo(req, res, next) {
 export async function updateTodo(req, res, next) {
   try {
     await connectToDB();
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+
+    const { title } = req.body;
+    if (!title) return next(createError(400, "Title is required!"));
+
+    const updatedTodo = await Todo.findByIdAndUpdate(
+      req.params.id,
+      { title },
+      { new: true }
+    );
 
     if (!updatedTodo) return next(createError(404, "Todo not found"));
-    res.status(200).json({ message: "Todo updated", todo: updatedTodo });
+    
+    res.status(200).json(updatedTodo);  // ✅ Return updated todo
   } catch (err) {
     next(createError(500, "Failed to update todo"));
   }
 }
+
 
 // Delete a todo by ID
 export async function deleteTodo(req, res, next) {

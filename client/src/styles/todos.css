@@ -1,0 +1,135 @@
+/* Todo List Container */
+.todo-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* Add Button */
+.add-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn svg {
+  margin-right: 5px;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+/* Todo List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+}
+
+/* Left side: Text + Check Icon */
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Right side: Edit + Delete Icons */
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Completed Todo */
+li.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* Icons */
+.check-icon, .trash-icon, .edit-icon, .save-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.trash-icon {
+  color: red;
+}
+
+.trash-icon:hover {
+  color: darkred;
+}
+
+.edit-icon {
+  color: blue;
+}
+
+.edit-icon:hover {
+  color: darkblue;
+}
+
+.save-icon {
+  color: orange;
+}
+
+.save-icon:hover {
+  color: darkorange;
+}
+
+/* Editable input field */
+.edit-input {
+  width: 200px;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

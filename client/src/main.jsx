@@ -10,9 +10,9 @@ import Login from './components/Login.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Toaster />
     <BrowserRouter>
       <Routes>
-        <Toaster position='top-center' />
         <Route path='/' element={<Todos />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
